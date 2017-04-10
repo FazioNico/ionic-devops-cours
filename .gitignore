@@ -44,3 +44,14 @@ UserInterfaceState.xcuserstate
 *.js
 *-config.*
 # config.*
+
+# add for master
+src
+server
+resources
+package.json
+config.xml
+ionic.config.json
+server.ts
+tsconfig.json
+tslint.json
