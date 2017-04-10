@@ -3,7 +3,7 @@
 @Date:   09-04-2017
 @Email:  contact@nicolasfazio.ch
 @Last modified by:   webmaster-fazio
-@Last modified time: 09-04-2017
+@Last modified time: 10-04-2017
 -->
 
 <img src="http://cloudoki.com/images/frameworks/ionic.png" width="80"><img src="https://live.zoomdata.com/zoomdata/service/connection/types/icon/MONGO_MONGO?v=$%7Btimestamp%7D" width="80"><img src="http://apps.octoconsulting.com/images/expressIcon.png" width="80"><img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" width="80"><img src="http://code.runnable.com/images/provider-icons/icon-node.js.svg" width="80">
@@ -42,6 +42,18 @@ In this step we'll all see how to deploy Browser version on Github gh-pages
 
 ### Step 10 | Publish IOS app in Apple Store
 In this step we'll see how to publish your app in AppleStore
+
+
+## The Goal
+Building from sketch a simple Ionic MEAN stack Todos application (Frond-end, Back-end & Database).
+
+Demo app: [Ionic DevOps App](https://fazionico.github.io/ionic-devops-cours/)
+
+## How it work
+- Each step to building app is in separate git branch.
+- Simply switch branch to pass steps.
+- Starting at step/01
+
 
 ## About author
 Hi, i'm a Front-end developper living in Geneva Switzerland and i build hybrid mobile & web applications for almost 15 years. You can follow me on Twitter @FazioNico or checkout my own website http://nicolasfazio.ch
