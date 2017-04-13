@@ -34,11 +34,11 @@ In this step we'll deploy BDD with MongoLab.
 ### Step 07 | Deploy Server on Heroku
 In this step we'll deploy server side on Heroku.
 
-### Step 08 | Deploy Front-end to test in device
-In this step we'll all see how to deploy IOS version
-
-### Step 09 | Deploy Front-end PWA on Github
+### Step 08 | Deploy Front-end PWA on Github
 In this step we'll all see how to deploy Browser version on Github gh-pages
+
+### Step 09 | Deploy Front-end to test in device
+In this step we'll all see how to deploy IOS version
 
 ### Step 10 | Publish IOS app in Apple Store
 In this step we'll see how to publish your app in AppleStore
