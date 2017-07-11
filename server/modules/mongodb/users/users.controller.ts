@@ -3,7 +3,7 @@
 * @Date:   25-12-2016
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 27-03-2017
+ * @Last modified time: 10-07-2017
 */
 
 import * as mongoose from 'mongoose';
@@ -26,7 +26,7 @@ export const userController = {
       email:  aa@aa.ch
       pwd:    A123456
   */
-	setup : (req,res) =>{
+	setup : (req:any,res:any) =>{
     // Use bcrypte to encrypte user password
     bcrypt.hash('A123456', BCRYPT_ROUND, (err, hash) =>{
       if(err){
@@ -54,7 +54,7 @@ export const userController = {
     });
 	},
 
-	signup : (req,res) =>{
+	signup : (req:any,res:any) =>{
     console.log('req.body-> ', req.body);
 		//(new User(<IUserModel>req.body))
     // check existe user in DB
@@ -97,7 +97,7 @@ export const userController = {
       }
     });
 	},
-  isAuth: (req,res)=> {
+  isAuth: (req:any,res:any)=> {
     Authentication.checkAuthentication(req,  (isAuth: boolean|any): void =>{
       //console.log('looog-> ', doc)
       if (isAuth) {
@@ -118,7 +118,7 @@ export const userController = {
       }
     });
 	},
-  auth: (req,res)=> {
+  auth: (req:any,res:any)=> {
     // find the user
     User.findOne({email: req.body.email}, (err, user:IUserModel)=> {
       if (err) throw err;
@@ -160,7 +160,7 @@ export const userController = {
       }
     });
   },
-  getAll : (req,res) => {
+  getAll : (req:any,res:any) => {
 		User.find((err, docs:IUserModel[]) => {
 			if(err) return console.log(err);
       // remove password user from datas
@@ -174,7 +174,7 @@ export const userController = {
 			res.json(docsReady);
 		})
 	},
-  getUser: (req,res) => {
+  getUser: (req:any,res:any) => {
     Authentication.checkAuthentication(req,  (isAuth: boolean|any): void =>{
       //console.log('looog-> ', doc)
       if (isAuth) {

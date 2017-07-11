@@ -3,7 +3,7 @@
  * @Date:   08-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 09-04-2017
+ * @Last modified time: 10-07-2017
  */
 
 import { Component } from '@angular/core';
@@ -21,7 +21,8 @@ import { TodosService, ITodo } from '../../providers/todos-service/todos-service
  * on Ionic pages and navigation.
  */
 @IonicPage({
-  name: 'items'
+  name: 'items',
+  segment: 'items'
 })
 @Component({
   selector: 'page-items',

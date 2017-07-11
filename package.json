@@ -1,5 +1,5 @@
 {
-  "name": "ionic-devops-cours",
+  "name": "ionic-devops-front",
   "author": "Nicolas Fazio",
   "homepage": "http://nicolasfazio.ch/",
   "private": true,
@@ -13,48 +13,51 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
+  "version": "1.1.0",
   "dependencies": {
-    "@angular/common": "4.0.0",
-    "@angular/compiler": "4.0.0",
-    "@angular/compiler-cli": "4.0.0",
-    "@angular/core": "4.0.0",
-    "@angular/forms": "4.0.0",
-    "@angular/http": "4.0.0",
-    "@angular/platform-browser": "4.0.0",
-    "@angular/platform-browser-dynamic": "4.0.0",
-    "@ionic-native/core": "3.4.2",
-    "@ionic-native/splash-screen": "3.4.2",
-    "@ionic-native/status-bar": "3.4.2",
+    "@angular/common": "4.1.3",
+    "@angular/compiler": "4.1.3",
+    "@angular/compiler-cli": "4.1.3",
+    "@angular/core": "4.1.3",
+    "@angular/forms": "4.1.3",
+    "@angular/http": "4.1.3",
+    "@angular/platform-browser": "4.1.3",
+    "@angular/platform-browser-dynamic": "4.1.3",
+    "@ionic-native/core": "3.12.1",
+    "@ionic-native/splash-screen": "3.12.1",
+    "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
-    "ionic-angular": "3.0.1",
+    "ionic-angular": "3.5.0",
     "ionicons": "3.0.0",
-    "rxjs": "5.1.1",
-    "sw-toolbox": "3.4.0",
-    "zone.js": "^0.8.4",
+    "rxjs": "5.4.0",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.12",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.1",
-    "cors": "^2.8.1",
-    "express": "^4.15.2",
-    "jsonwebtoken": "^7.3.0",
-    "mongodb": "^2.2.25",
-    "mongoose": "^4.9.1",
-    "morgan": "^1.8.1",
-    "typescript": "2.1.4"
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.3",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.1",
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.3.0",
-    "@types/body-parser": "^1.16.1",
+    "@ionic/app-scripts": "2.0.0",
+    "@ionic/cli-plugin-ionic-angular": "1.3.1",
+    "@types/bcryptjs": "^2.4.0",
+    "@types/body-parser": "^1.16.4",
     "@types/cors": "^2.8.1",
-    "@types/express": "^4.0.35",
-    "@types/mongodb": "^2.1.41",
-    "@types/mongoose": "^4.7.9",
-    "@types/node": "^7.0.8",
-    "mongoose": "^4.9.1",
+    "@types/express": "^4.0.36",
+    "@types/jsonwebtoken": "^7.2.2",
+    "@types/mongodb": "^2.2.7",
+    "@types/mongoose": "^4.7.18",
+    "@types/morgan": "^1.7.32",
+    "@types/node": "^8.0.9",
+    "mongoose": "^4.11.1",
     "nodemon": "^1.11.0",
-    "typescript": "~2.2.1"
-  },
-  "engines": {
-    "node": "~7.0.0"
+    "tslint": "^5.5.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "typescript": "2.3.4"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
@@ -72,5 +75,8 @@
       "locator": "ios"
     }
   ],
-  "description": "ionic-devops-front: An Ionic project"
+  "description": "ionic-devops-front: An Ionic project",
+  "engines": {
+    "node": "~7.0.0"
+  }
 }

@@ -2,8 +2,8 @@
 * @Author: Nicolas Fazio <webmaster-fazio>
 * @Date:   25-12-2016
 * @Email:  contact@nicolasfazio.ch
-* @Last modified by:   webmaster-fazio
-* @Last modified time: 25-12-2016
+ * @Last modified by:   webmaster-fazio
+ * @Last modified time: 10-07-2017
 */
 
 import * as express from 'express';
@@ -11,7 +11,7 @@ import { userController }  from "../../mongodb/users/users.controller";
 import { log } from '../../log';
 import {Authentication} from '../../authentication';
 
-const router = express.Router();
+const router:any = express.Router();
 
 export class UsersRoutes {
 
@@ -22,7 +22,7 @@ export class UsersRoutes {
     }
 
     routes() {
-        var controller = this._UsersController;
+        let controller:any = this._UsersController;
         // Public Endpoints:
         router.get('/setup', log, controller.setup)
         router.post('/auth', log, controller.auth)

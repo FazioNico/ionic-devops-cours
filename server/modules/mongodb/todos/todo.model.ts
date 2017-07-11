@@ -3,7 +3,7 @@
 * @Date:   22-12-2016
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 31-03-2017
+ * @Last modified time: 10-07-2017
 */
 
 import * as mongoose from 'mongoose';
@@ -18,4 +18,4 @@ export interface ITodoModel extends mongoose.Document {
 }
 
 // Define & export Mongoose Model with Interface
-export const Todo = mongoose.model<ITodoModel>('todos', todoSchema);
+export const Todo:mongoose.Model<ITodoModel> = mongoose.model<ITodoModel>('todos', todoSchema);

@@ -2,8 +2,8 @@
 * @Author: Nicolas Fazio <webmaster-fazio>
 * @Date:   25-12-2016
 * @Email:  contact@nicolasfazio.ch
-* @Last modified by:   webmaster-fazio
-* @Last modified time: 25-12-2016
+ * @Last modified by:   webmaster-fazio
+ * @Last modified time: 10-07-2017
 */
 
 import * as mongoose from 'mongoose';
@@ -18,4 +18,4 @@ export interface IUserModel extends mongoose.Document {
 }
 
 // Define & export Mongoose Model with Interface
-export const User = mongoose.model<IUserModel>('users', UserSchema);
+export const User:mongoose.Model<IUserModel>  = mongoose.model<IUserModel>('users', UserSchema);

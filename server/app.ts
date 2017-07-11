@@ -3,7 +3,7 @@
 * @Date:   21-12-2016
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 28-03-2017
+ * @Last modified time: 11-07-2017
 */
 
 /// <reference path="./@types/index.d.ts" />
@@ -21,6 +21,8 @@ import { DataBase }  from "./modules/database";
 import { log }  from "./modules/log";
 // Import secretTokenKey config
 import { SECRET_TOKEN_KEY } from "./config";
+
+declare var process:any;
 
 export class Server{
 

@@ -2,8 +2,8 @@
 * @Author: Nicolas Fazio <webmaster-fazio>
 * @Date:   25-12-2016
 * @Email:  contact@nicolasfazio.ch
-* @Last modified by:   webmaster-fazio
-* @Last modified time: 25-12-2016
+ * @Last modified by:   webmaster-fazio
+ * @Last modified time: 10-07-2017
 */
 
 import { verify } from 'jsonwebtoken';
@@ -13,7 +13,7 @@ import { SECRET_TOKEN_KEY } from "../config";
 
 // export the authentication class:
 export class Authentication {
-  public static checkAuthentication(req, cb: (isAuth: boolean|any) => void): void {
+  public static checkAuthentication(req:any, cb: (isAuth: boolean|any) => void): void {
     // look for the token in the incoming request:
     let token: string = req.body.token || req.query.token ||
       req.get('x-access-token') || req.get('authentication') || undefined;
@@ -34,7 +34,7 @@ export class Authentication {
     }
   }
 
-  public static authenticatedRoute(req, res, next): void {
+  public static authenticatedRoute(req:any, res:any, next:any): void {
     Authentication.checkAuthentication(req,  (isAuth: boolean|any): void =>{
       if (isAuth) {
         // the user has a proper token: let's call next
