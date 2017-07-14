@@ -35,7 +35,10 @@ In this step we'll see how to sing Front-End & Back-End in same project folder.
 "server/**/*.ts",
 "server.ts"
 ```
-- try `$ npm run start:dev` to run front & back-end
+- try `$ ionic serve` to run front then kill process
+- try `$ npm run mongod` to start mongodb then kill process
+- try `$ npm run server` to start back-end then kill process
+- if all run find, try `$ npm run start:dev` to run front & back-end with mongodb
 - `cmd + c` to kill process
 
 ## About author
