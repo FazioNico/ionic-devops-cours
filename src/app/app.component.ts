@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+/**
+ * @Author: Nicolas Fazio <webmaster-fazio>
+ * @Date:   30-05-2017
+ * @Email:  contact@nicolasfazio.ch
+ * @Last modified by:   webmaster-fazio
+ * @Last modified time: 14-07-2017
+ */
+
+import { Component, OnInit } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -7,8 +15,8 @@ import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
-  rootPage:any = HomePage;
+export class MyApp implements OnInit {
+  rootPage:any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -18,5 +26,9 @@ export class MyApp {
       splashScreen.hide();
     });
   }
-}
 
+  ngOnInit(){
+    this.rootPage  = HomePage;
+    //console.log ("OnInit " +  this.rootPage)
+  }
+}

@@ -20,7 +20,8 @@
     "node_modules",
     "dist",
     "server/**/*.ts",
-    "server.ts"    
+    "server.ts",
+    "./src/**/*.spec.ts"    
   ],
   "compileOnSave": false,
   "atom": {

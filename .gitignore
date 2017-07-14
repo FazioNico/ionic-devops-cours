@@ -41,6 +41,6 @@ UserInterfaceState.xcuserstate
 .publish/
 
 # Added files & folders
-*.js
-*-config.*
+# *.js
+# *-config.*
 # config.*
