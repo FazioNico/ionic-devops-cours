@@ -3,7 +3,7 @@
  * @Date:   08-04-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 14-07-2017
+ * @Last modified time: 15-07-2017
  */
 
 import { Component } from '@angular/core';
@@ -14,6 +14,9 @@ import { Subscription } from 'rxjs/Subscription.js'
 
 import { TodosService, ITodo } from '../../providers/todos-service/todos-service';
 
+import { NotifMock } from '../../providers/notifications-service/notifications-mock';
+
+// import { LocalNotifications } from '@ionic-native/local-notifications';
 /**
  * Generated class for the Items page.
  *
@@ -35,7 +38,9 @@ export class Items {
 
   constructor(
     public navCtrl: NavController,
-    public todoService: TodosService
+    public todoService: TodosService,
+    // private localNotifications: LocalNotifications,
+    private notifMock: NotifMock
   ) {
     this.todos = this.todoService.todos; // subscribe to entire collection
     this.todoService.loadAll()
@@ -110,6 +115,14 @@ export class Items {
     // disable alert and use Native Plugin
     // with the custom provider localNotifications
     // to have debug mode in browser
-    alert(`Expired: ${todo.description}`)
+
+    //alert(`Expired: ${todo.description}`)
+
+    this.notifMock.schedule({
+    //this.localNotifications.schedule({
+      id: 1,
+      text: 'Single ILocalNotification',
+      data: { secret: 'key' }
+    });
   }
 }
