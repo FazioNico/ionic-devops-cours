@@ -44,3 +44,5 @@ UserInterfaceState.xcuserstate
 # *.js
 # *-config.*
 # config.*
+environments/**/*.js
+production.*

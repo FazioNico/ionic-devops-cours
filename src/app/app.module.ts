@@ -3,7 +3,7 @@
  * @Date:   30-05-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 14-07-2017
+ * @Last modified time: 15-07-2017
  */
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,12 +18,15 @@ import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
 import { TodosService } from '../providers/todos-service/todos-service';
 
+import { EnvironmentsModule } from "./environment/environment.module";
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage
   ],
   imports: [
+    EnvironmentsModule,
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp)

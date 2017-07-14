@@ -4,13 +4,14 @@
   "homepage": "http://nicolasfazio.ch/",
   "private": true,
   "scripts": {
-    "start:dev": "npm run mongod & npm run server:dev & ionic serve",
-    "server": "tsc server.ts --outDir ./dist && node ./dist/server.js",
-    "server:dev": "tsc server.ts -w --outDir ./dist & nodemon ./dist/server.js  --ignore src/ --ignore www/ --ignore .tmp/",
+    "start:dev": "npm run mongod & npm run server:dev & ionic serve --dev",
+    "start:prod": "npm run server & ionic serve --prod",
+    "server": "tsc server.ts --outDir ./dist && NODE_ENV=prod node ./dist/server.js ",
+    "server:dev": "tsc server.ts -w --outDir ./dist & nodemon ./dist/server.js --dev  --ignore src/ --ignore www/ --ignore .tmp/",
     "mongod": "$HOME/Applications/mongodb/bin/mongod --dbpath $HOME/Applications/mongodb/data/db",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build --prod",
     "ionic:serve": "ionic-app-scripts serve",
     "test": "karma start ./test-config/karma.conf.js"
   },
@@ -95,5 +96,8 @@
   "description": "ionic-devops-front: An Ionic project",
   "engines": {
     "node": "~7.0.0"
+  },
+  "config": {
+    "ionic_webpack": "./webpack.config.js"
   }
 }

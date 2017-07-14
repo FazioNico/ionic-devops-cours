@@ -3,7 +3,7 @@
  * @Date:   10-07-2017
  * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 10-07-2017
+ * @Last modified time: 15-07-2017
  */
 
 
@@ -13,3 +13,15 @@
  export const BCRYPT_ROUND: number = 10;
  export const PASSWORD_MIN_LENGHT: number = 6;
  export const JWT_EXPIRE: number = 86400000;
+
+ import { devVariables } from '../environments/development';
+ import { prodVariables } from '../environments/production';
+ import { IEnvironment } from "../environments/env-model";
+
+ declare var process:any;
+ 
+ export function environmentConfig():IEnvironment {
+   let env = devVariables;
+   if(process.env.NODE_ENV === 'prod'){env = prodVariables}
+   return env;
+ }
