@@ -3,7 +3,7 @@
 * @Date:   21-12-2016
 * @Email:  contact@nicolasfazio.ch
  * @Last modified by:   webmaster-fazio
- * @Last modified time: 10-07-2017
+ * @Last modified time: 15-07-2017
 */
 
 import * as mongoose from 'mongoose';
@@ -28,8 +28,8 @@ export const mongoDbConnect = ()=>{
 			mongoose.connect(MONGODB_URI, <any>{
 					useMongoClient: true
 				}, (err) => {
-					if (err) { reject("Error connecting to MongoDB!")}
-				  else{  resolve("MongoDB Ready!"); }
+					if (err) { reject(`Error connecting to MongoDB! -> ${MONGODB_URI}`)}
+				  else{  resolve(`MongoDB Ready! -> ${MONGODB_URI}`); }
 			});
 	})
 
