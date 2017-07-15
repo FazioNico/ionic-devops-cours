@@ -11,194 +11,58 @@
 # Ionic DevOps - Cours
 Ionic MEAN Stack DevOps cours for [Nomades Advenced Technologie](http://nomades.ch).
 
-### Step 04 | Add environment variable
-In this step we'll add and use environement configuration variable to switch from dev to prod environement
+### Step 05 | Configure app & clean code & update test
+In this step we'll config app files and update all test to have build pass true
 
-- create file `./webpack.config.js` in root app and add this
-
+<b>app.module</b>
+- add config app
+- update `IonicModule.forRoot(MyApp),` with `IonicModule.forRoot(MyApp, ionicAppConfig),`
 ```
-var path = require('path');
-var webpack = require('webpack');
-var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
-var ModuleConcatPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
-var config = require('@ionic/app-scripts/config/webpack.config.js')
-
+const pages:Array<any> = [
+  HomePage
+]
+const providers:Array<any> = [
+  StatusBar,
+  SplashScreen,
+  TodosService,
+  {provide: ErrorHandler, useClass: IonicErrorHandler}
+];
 /**
-* [prodPlugins]
-* Removed cause it mek trouble on `$ ionic serve --prod`
-*/
-var prodPlugins = [];
-if (process.env.IONIC_ENV === 'prod') {
-  prodPlugins.push(new ModuleConcatPlugin());
-}
-
-config.plugins = [
-  new webpack.EnvironmentPlugin(['IONIC_ENV']),
-  ionicWebpackFactory.getIonicEnvironmentPlugin(),
-  ionicWebpackFactory.getCommonChunksPlugin(),
-] //.concat(prodPlugins);
-// or other synthax:
-// config.plugins.push(new webpack.EnvironmentPlugin(['IONIC_ENV']))
-
-module.exports = config
-```
-- Create folder `./environments` in root app
-- create files `./environments/env-model.ts` and add this   
-
-```
-export interface IEnvironment {
-  apiEndpoint: string,
-  environmentName: string,
-  ionicEnvName: string,
-  dbHost: string,
-  dbName: string
-}
-```
-- create files `./environments/development.ts` and add this
-
-```
-import { IEnvironment } from "./env-model";
-
-export const devVariables:IEnvironment = {
-  environmentName: 'Development Environment',
-  ionicEnvName: 'dev',
-
-  // Front-end
-  apiEndpoint: 'http://localhost:8080',
-
-  // Back-end
-  dbHost: 'mongodb://localhost:27017',
-  dbName: 'test'
+ * See Ionic Docs for AppConfiguration
+ * => https://ionicframework.com/docs/api/config/Config/
+ */
+const ionicAppConfig:Object = {
+  tabsPlacement: 'top',
+  mode: 'md'
 };
-```
-- create files `production.ts` and add your production environment variable
-- create folder `./src/app/environment` in app folder
-- create `./src/app/environment/environment.module.ts` and add this
-
-```
-import { NgModule } from '@angular/core';
-import { EnvVariables } from './environment.token';
-import { devVariables } from '../../../environments/development';
-import { prodVariables } from '../../../environments/production';
-import { IEnvironment } from "../../../environments/env-model";
-
-
-declare const process: any; // Typescript compiler will complain without this
-
-export function environmentFactory():IEnvironment {
-  let env:IEnvironment = process.env.IONIC_ENV === 'prod' ? prodVariables : devVariables;
-  if(process.env.IONIC_ENV != 'prod') console.log('env->', env)
-  return env
-}
 
 @NgModule({
-  providers: [
-    {
-      provide: EnvVariables,
-      useFactory: environmentFactory
-    }
-  ]
+  declarations: [MyApp, ...pages],
+  imports: [
+    EnvironmentsModule,
+    BrowserModule,
+    HttpModule,
+    IonicModule.forRoot(MyApp, ionicAppConfig)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [MyApp, ...pages],
+  providers: [...providers] // do not use ES8 synthax, it meke trouble on `build --prod`
 })
-export class EnvironmentsModule {}
 ```
-- create file `./src/app/environment/environment.token.ts` and add this
+<b>package.json</b>
+- update datas
 
-```
-/**
- * [Angular Dependency injection with InjectionToken()]
- * See Angular Docs:
- *    => https://angular.io/guide/dependency-injection
- *    => https://angular.io/guide/dependency-injection#non-class-dependencies
- *    => https://angular.io/guide/dependency-injection#injection-token
- *    => https://angular.io/api/core/InjectionToken
- */
+<b>manifest.json</b>
+- update datas
 
- import { InjectionToken } from "@angular/core";
- import { IEnvironment } from "../../../environments/env-model";
+<b>ionic.config.json</b>
+- update datas
 
- export let EnvVariables = new InjectionToken<IEnvironment>("env.variables");
-```
+<b>config.xml</b>
+- update datas
 
-<b>App.module</b>
-- import EnvironmentsModule
-- add EnvironmentsModule into bootstrap imports
-
-<b>Providers</b>
-- change api url endpoint by using EnvironmentsModule
-
-```
-import { EnvVariables } from '../../app/environment/environment.token';
-import { IEnvironment } from "../../../environments/env-model";
-...
-const TODOS_URL:string = "/todos"
-...
-constructor(public http: Http, @Inject(EnvVariables) public envVariables:IEnvironment)
-...
-this.http.get(`${this.envVariables.apiEndpoint+TODOS_URL}`)
-...
-```
-
-<b>Package.json</b>
-- update run scripts to reflect the following
-
-```
-"start:dev": "npm run mongod & npm run server:dev & ionic serve --dev",
-"start:prod": "npm run server & ionic serve --prod",
-"server": "tsc server.ts --outDir ./dist && NODE_ENV=prod node ./dist/server.js ",
-"server:dev": "tsc server.ts -w --outDir ./dist & nodemon ./dist/server.js --dev  --ignore src/ --ignore www/ --ignore .tmp/",
-"mongod": "$HOME/Applications/mongodb/bin/mongod --dbpath $HOME/Applications/mongodb/data/db",
-"clean": "ionic-app-scripts clean",
-"build": "ionic-app-scripts build",
-"ionic:build": "ionic-app-scripts build --prod",
-"ionic:serve": "ionic-app-scripts serve",
-"test": "karma start ./test-config/karma.conf.js"
-```
-- link our special webpack.config file
-
-```
-"config": {
-  "ionic_webpack": "./webpack.config.js"
-},
-```
-
-<b>tsconfig.json</b>
-- update include files with
-
-```
-"include": [
-  "src/**/*.ts",
-  "environments/**/*.ts"
-],
-```
-
-<b>ItesmPage</b>
-- fix test to pass true
-
-<b>./server/config.ts</b>
-- update with
-
-```
-import { devVariables } from '../environments/development';
-import { prodVariables } from '../environments/production';
-import { IEnvironment } from "../environments/env-model";
-
-export function environmentConfig():IEnvironment {
-  let env = devVariables;
-  if(process.env.NODE_ENV === 'prod'){env = prodVariables}
-  return env;
-}
-```
-
-<b>.gitignore</b>
-- add `environments/**/*.js`
-- add `production.*`
-
-<b>Test</b>
-- Fix all test to pass true
-
-<b>CLI</b>
-- run `$ npm run start:dev` to start in development mode
-- run `$ npm run start:prod` to start in production mode
+<b>./src/index.html</b>
+- update datas
 
 ## About author
 Hi, i'm a Front-end developper living in Geneva Switzerland and i build hybrid mobile & web applications for almost 15 years. You can follow me on Twitter @FazioNico or checkout my own website http://nicolasfazio.ch

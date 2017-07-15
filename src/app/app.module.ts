@@ -20,27 +20,34 @@ import { TodosService } from '../providers/todos-service/todos-service';
 
 import { EnvironmentsModule } from "./environment/environment.module";
 
+const pages:Array<any> = [
+  HomePage
+]
+const providers:Array<any> = [
+  StatusBar,
+  SplashScreen,
+  TodosService,
+  {provide: ErrorHandler, useClass: IonicErrorHandler}
+];
+/**
+ * See Ionic Docs for AppConfiguration
+ * => https://ionicframework.com/docs/api/config/Config/
+ */
+const ionicAppConfig:Object = {
+  tabsPlacement: 'top',
+  mode: 'md'
+};
+
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage
-  ],
+  declarations: [MyApp, ...pages],
   imports: [
     EnvironmentsModule,
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, ionicAppConfig)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    TodosService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+  entryComponents: [MyApp, ...pages],
+  providers: [...providers] // do not use ES8 synthax, it meke trouble on `build --prod`
 })
 export class AppModule {}

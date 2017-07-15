@@ -1,5 +1,5 @@
 {
-  "name": "ionic-devops-front",
+  "name": "ionic-devops-cours",
   "author": "Nicolas Fazio",
   "homepage": "http://nicolasfazio.ch/",
   "private": true,
@@ -93,7 +93,7 @@
       "locator": "ios"
     }
   ],
-  "description": "ionic-devops-front: An Ionic project",
+  "description": "Ionic MEAN Stack DevOps cours for Nomades Advenced Technologie.",
   "engines": {
     "node": "~7.0.0"
   },
