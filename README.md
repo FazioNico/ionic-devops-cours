@@ -52,8 +52,13 @@ Demo app: [Ionic DevOps App](https://fazionico.github.io/ionic-devops-cours/)
 ## How it work
 - Each step to building app is in separate git branch.
 - Simply switch branch to pass steps.
-- Starting at step/01
+- clone Front-End project from this repository [ionic-devops-front](https://github.com/FazioNico/ionic-devops-front)
+- clone Back-End project from this repository [nodejs-simple-rest-ts](https://github.com/FazioNico/nodejs-simple-rest-ts)
+- then starting exercices at step/01
 
+## Git cmd tips
+- `$ git checkout -b <BRANCH_NAME>` to create new repository branch
+- `$ git pull origin <BRANCH_NAME>` to get specific branch datas
 
 ## About author
 Hi, i'm a Front-end developper living in Geneva Switzerland and i build hybrid mobile & web applications for almost 15 years. You can follow me on Twitter @FazioNico or checkout my own website http://nicolasfazio.ch

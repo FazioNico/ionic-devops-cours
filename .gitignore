@@ -41,17 +41,8 @@ UserInterfaceState.xcuserstate
 .publish/
 
 # Added files & folders
-*.js
-*-config.*
+# *.js
+# *-config.*
 # config.*
-
-# add for master
-src
-server
-resources
-package.json
-config.xml
-ionic.config.json
-server.ts
-tsconfig.json
-tslint.json
+environments/**/*.js
+production.*
