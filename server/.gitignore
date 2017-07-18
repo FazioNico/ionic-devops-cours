@@ -33,16 +33,5 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-# Ignore server builded files
-# server/**/*.js
-# server.js
-
 # Ignore deploy Browser version
 .publish/
-
-# Added files & folders
-# *.js
-# *-config.*
-# config.*
-environments/**/*.js
-production.*
